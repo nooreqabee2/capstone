@@ -1,0 +1,78 @@
+{% extends 'jumla/base/base.html' %}
+{% load static %}
+{% block Title %}delivery home{% endblock %}
+
+{% block content %}
+
+<div class="mt-20 ">
+
+      
+    <div class="rounded  container mx-auto  p-2 bg-neutral-100 ">
+      <h1 class="font-semibold text-2xl mx-16 p-4">طلبات الزبائن</h1>
+      <div class="flex justify-end mx-28">
+          <div class="mb-3 xl:w-90">
+          <form action="#" method="Get">
+    <select class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+        <option class="text-center" selected>  الكل   </option>
+
+        {% for city in cities %}
+        <option value="{{ city.id }}">
+                {{ city.name }}
+        </option>
+        {% endfor %}
+    </select>
+          </form>
+
+  </div>
+
+      </div>
+
+      <div class="flex  mt-5 flex-col justify-center items-center ">
+        {% for cart in page_elements %}
+
+
+        <div class="rounded w-10/12 p-4 m-2 bg-white hover:shadow-lg  border-b-4 ">
+          <div class="flex flex-col justify-around" >
+
+              <h1>اسم الزبون : <span>
+                  <a href="{% url 'get_cart_bills' cart.id %}">{{ cart.userOwner.first_name }}</a>
+
+              </span></h1>
+                <h1>  رقم الهاتف: <span class="text-sm">
+                 {{ cart.userOwner.phone_number }}
+                </span></h1>
+                  <h1>   العنوان: <span>
+                  {{ cart.userOwner.address }}
+                   </span></h1>
+                    <h1>   تاريخ الفاتورة : <span>
+                      {{ cart.Date |date:'Y-m-d a' }}
+                       </span></h1>
+              <h1>   اجمالي السلة: <span>
+                      {{ cart.total }}
+                       </span></h1>
+
+          </div>
+      </div>
+
+          {% endfor %}
+      </div>
+    </div>
+      
+</div>
+{#    paginator   #}
+
+      {% include 'jumla/base/paginator.html' %}
+{% endblock content %}

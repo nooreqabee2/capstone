@@ -1,0 +1,34 @@
+{% extends 'jumla/base/base.html' %}
+
+{% load static %}
+
+{% block static %}
+ 
+
+{% endblock %}
+{% block content %}
+
+
+<div class="h-screen">
+    <h1 class="mt-5 text-xl ">صفحة التصويت </h1>
+
+    <div class="flex justify-center mt-5">
+        <div class="card-header" style="width: 40rem;">
+            {% for question in questions%}
+            <ul class="list-group list-group-flush">
+                {% if request.user.groups.all.first.name == "vendor" %}
+                <a href="{% url 'Result' question.id %}"><li class="list-group-item">{{question.question}} </li> </a>
+                {% else %}
+              <a href="{% url 'Vote' question.id %}"><li class="list-group-item">{{question.question}} </li> </a>
+            {% endif %}
+            </ul>
+            {% endfor %}
+          </div>
+    </div>
+ 
+</div>
+
+
+
+
+{% endblock content %}

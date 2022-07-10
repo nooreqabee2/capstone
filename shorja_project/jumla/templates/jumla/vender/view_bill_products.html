@@ -1,0 +1,62 @@
+{% extends 'jumla/base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="min-h-screen m-10 ">
+
+    <table class="w-full  bg-neutral-100">
+        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+            <tr>
+                <th class=" whitespace-nowrap">
+                    <div class="font-semibold text-center"></div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">المنتج</div>
+                </th>
+               
+               
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">الكمية  </div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center"> السعر </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="text-sm divide-y divide-gray-100  " >
+            {% for product in bill_products %}
+            <tr>
+                <td class="whitespace-nowrap ">
+                    <div class="flex shrink-0   -ml-20 p-2 ">
+
+                        <img src="{{ product.item.Image_Product.first.image.url}}" class="w-14 h-14  rounded" alt="">
+                    </div>
+                </td>
+               
+                <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-center mr-2  text-gray-800">{{ product.item.ProductName }}</div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-center"> {{ product.qty }} </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-center font-medium text-teal-600">  {{ product.item.price }}  </div>
+                </td>
+         
+        
+            </tr>
+            
+
+          
+{% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+    
+  
+
+{% endblock %}

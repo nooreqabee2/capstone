@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ar" dir="rtl">
+{% block html %}
+{% endblock %}
+
+<head>
+ <title>{% block Title %}{% endblock %}</title>
+{% include 'jumla/base/header.html' %}
+
+
+</head>
+<body>
+{% include 'jumla/base/navbar.html' %}
+<div class="container">
+
+     {% block content %}
+
+
+
+    {% endblock %}
+</div>
+
+  {% include 'jumla/base/footer.html' %}
+{% block static %}
+
+    {% endblock %}
+
+</body>
+</html>

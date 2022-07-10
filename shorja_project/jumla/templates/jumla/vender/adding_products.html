@@ -1,0 +1,77 @@
+   {% extends 'jumla/base/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block Title %}Create New Product{% endblock %}
+{% block content %}
+
+
+<div class="bg-neutral-100 rounded   m-20">
+
+    <h1 class="text-2xl p-20 "> اضافة منتج </h1>
+    <div class="flex justify-center -mt-5">
+        <div class="border border-black/5 w-10/12 "></div>
+    </div>
+ <form  action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="p-40 -mt-20 ">
+            <div>
+                <h1  class="mb-4">اسم المنتج</h1>
+                {{ form.ProductName|as_crispy_field }}
+    
+            </div>
+            <div class="mt-4">
+                <h1  class="mb-4">القياس</h1>
+                {{ form.Size|as_crispy_field }}
+    
+            </div>
+            <div class="mt-4">
+                <h1  class="mb-4">السعر</h1>
+                {{ form.price |as_crispy_field }}
+    
+            </div>
+            <div class="mt-4">
+                <h1  class="mb-4">الصنف</h1>
+                {{ form.Category |as_crispy_field }}
+    
+            </div>
+            <div class="mt-20">
+                <h1  class="mb-4">الوصف</h1>
+                {{ form.description|as_crispy_field }}
+    
+            </div>
+            <div class="mt-28">
+                <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-full bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div class="flex flex-col justify-center w-auto items-center">
+                        <svg class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                    </div>
+                    <input id="dropzone-file" type="file" class="hidden" multiple name="files" accept="image/*"/>
+                </label>
+            </div>
+      
+
+        </div>
+
+         
+          
+<div class=" flex justify-center p-10">
+
+    <button type="submit" class="  ml-4 h-12 w-36 rounded  hover:text-white border border-gray-800 hover:bg-black focus:ring-2 focus:outline-none focus:ring-gray-300 "> اضافة
+    </button>
+    <div class=" h-12 w-36 rounded  hover:text-white border text-center  border-gray-800 hover:bg-black focus:ring-2 focus:outline-none focus:ring-gray-300">
+        <div class="mt-2.5">
+            <a  class = "hover:text-white" href="{% url 'vendor_home' %}"  >الغاء</a>
+        </div>
+
+    </div>
+
+               </div>
+
+        </form>
+</div>
+
+ {% endblock content %}

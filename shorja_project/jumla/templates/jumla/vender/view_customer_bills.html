@@ -1,0 +1,65 @@
+{% extends 'jumla/base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="py-24     min-h-screen">
+
+
+  <div class="w-full  bg-white  rounded-sm border  border-gray-200">
+             
+    <div class="">
+  
+            <table class="w-full  bg-neutral-100">
+                <thead class="text-xs font-semibold uppercase text-gray-600 bg-gray-200">
+                    <tr>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">#</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">اسم الزبون</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center"> رقم الزبون</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center"> العنوان </div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center"> اجمالي الفاتورة   </div>
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody class="text-sm divide-y   divide-gray-100">
+                  {% for bill in page_elements %}
+                    <tr>
+                        <td class="p-5 whitespace-nowrap">
+                            <div class="text-center text-teal-600"> <a href="{% url 'view_bill_products' bill.id %}">{{ bill.id }}</a> </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-center "> {{ bill.cart.userOwner.first_name}} </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-center font-medium "> {{ bill.cart.userOwner}} </div>
+                        </td>
+                  
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-sm text-center">{{ bill.cart.userOwner.address}} </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-sm text-center">{{ bill.total}} </div>
+                        </td>
+                    </tr>
+          
+  {% endfor %}
+                </tbody>
+            </table>
+  
+    </div>
+  </div>
+</div>
+
+
+
+{% include 'jumla/base/paginator.html' %}
+{% endblock %}

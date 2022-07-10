@@ -1,0 +1,53 @@
+{% extends 'jumla/base/base.html' %}
+{% load static %}
+{% block static %}
+{% endblock %}
+{% block content %}
+
+<div class="h-screen">
+    <h1 class="mt-5 text-xl">صفحة التصويت</h1>
+
+
+
+    <div class="flex justify-center mt-5">
+        
+        <form action="{% url 'Result' question.id %}" method="POST">
+            {% csrf_token%}
+            <div class="border bg-gray-50" style="width: 40rem;">
+      
+                <div class="card-header p-2">
+         
+                    
+                     <h1>اختر الخيار الامثل لك </h1>
+                    
+                  
+           
+                </div>
+              
+                {% for op in option %}
+                <ul class="list-group p-2 ">
+                  <li class="list-group-item">
+                    <input class="form-check-input me-2" type="radio" name = 'choice' value="{{op.id}}" aria-label="...">
+                    {{op.options}}
+                  </li>
+            
+                </ul>
+                {% endfor %}
+                <div class="flex justify-center p-5">
+
+                    <input type="submit" value = "ارسال" class = 'bg-black w-96 h-10 border-white rounded mt-16 text-white' >
+                </div>
+
+              </div>
+
+        </form>
+      
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock content %}

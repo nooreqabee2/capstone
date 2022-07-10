@@ -1,0 +1,11 @@
+.pagination .page-link{
+
+    background-color: black;
+    color: white;
+    
+  }
+  .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+  
