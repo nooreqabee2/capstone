@@ -50,6 +50,7 @@ in terms of complexity the project have several models one for the user one for 
 # How to run the application
 - install project dependencies by running pip install -r requirements.txt
 - Make and apply migrations by running python manage.py makemigrations and python manage.py migrate. 
+- cd to shorja_project then run python manage.py runserver
 
 
 
